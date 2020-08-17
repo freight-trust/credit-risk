@@ -1,6 +1,6 @@
 {
   "name": "@freight-trust/credit-risk",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "credit risk profiling ",
   "main": "index.js",
   "scripts": {
