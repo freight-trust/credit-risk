@@ -1,0 +1,17 @@
+{
+  "Sheet1": [
+    { "B": "Applicant_Risk_Rating" },
+    { "B": "RuleTable", "C": "Condition", "D": "Condition", "E": "Action" },
+    {
+      "B": "P",
+      "C": "Applicant Age",
+      "D": "Medical History",
+      "E": "Applicant Risk Rating"
+    },
+    { "E": "\"High\",\"Medium\",\"Low\"" },
+    { "B": 1, "C": ">=25", "D": "\"good\"", "E": "\"Medium\"" },
+    { "B": 2, "C": ">60", "D": "\"bad\"", "E": "\"High\"" },
+    { "B": 3, "C": "-", "D": "\"bad\"", "E": "\"Medium\"" },
+    { "B": 4, "C": "<25", "D": "\"good\"", "E": "\"Low\"" }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "Sheet1": [
+    { "B": "Routing rules" },
+    {
+      "B": "RuleTable",
+      "C": "Condition",
+      "D": "Condition",
+      "E": "Condition",
+      "F": "Action",
+      "G": "Action",
+      "H": "Action"
+    },
+    {
+      "B": "O",
+      "C": "Age",
+      "D": "Risk category",
+      "E": "Debt review",
+      "F": "Routing",
+      "G": "Review level",
+      "H": "Reason"
+    },
+    {
+      "D": "\"Low\",\"Medium\",\"High\"",
+      "F": "\"Decline\",\"Refer\",\"Accept\"",
+      "G": "\"Level2\",\"Level1\",\"None\""
+    },
+    {
+      "B": 1,
+      "C": "-",
+      "D": "-",
+      "E": "-",
+      "F": "\"Accept\"",
+      "G": "\"None\"",
+      "H": "\"Acceptable\""
+    },
+    {
+      "B": 2,
+      "C": "<18",
+      "D": "-",
+      "E": "-",
+      "F": "\"Decline\"",
+      "G": "\"None\"",
+      "H": "\"Applicant too young\""
+    },
+    {
+      "B": 3,
+      "C": "-",
+      "D": "\"High\"",
+      "E": "-",
+      "F": "\"Refer\"",
+      "G": "\"Level1\"",
+      "H": "\"High risk application\""
+    },
+    {
+      "B": 4,
+      "C": "-",
+      "D": "-",
+      "E": "true",
+      "F": "\"Refer\"",
+      "G": "\"Level2\"",
+      "H": "\"Applicant under debt review\""
+    }
+  ]
+}

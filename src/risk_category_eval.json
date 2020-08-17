@@ -1,0 +1,39 @@
+{
+  "Sheet1": [
+    { "B": "RiskCategoryEvaluation" },
+    { "B": "ExistingCustomer", "C": "Applicant.ExistingCustomer" },
+    { "B": "CreditScore", "C": "Report.CreditScore" },
+    { "B": "Name", "C": "\"CIBIL\"" },
+    {
+      "B": "AffordabilityModel",
+      "C": "function(a, b) external  {js: {signature: \"done(null, Math.pow(a/b, 2) + 10)\"}}"
+    },
+    { "B": "ApplicationRiskScore", "C": "AffordabilityModel(CreditScore, b)" },
+    {
+      "B": "RuleTable",
+      "C": "Condition",
+      "D": "Condition",
+      "E": "Condition",
+      "F": "Action"
+    },
+    {
+      "B": "U",
+      "C": "ExistingCustomer",
+      "D": "ApplicationRiskScore",
+      "E": "CreditScore",
+      "F": "PostBureauRiskCategory"
+    },
+    { "B": 1, "C": "TRUE", "D": "<=120", "E": "<590", "F": "\"HIGH\"" },
+    { "B": 2, "E": "[590..610]", "F": "\"MEDIUM\"" },
+    { "B": 3, "E": ">610", "F": "\"LOW\"" },
+    { "B": 4, "D": ">120", "E": "<600", "F": "\"HIGH\"" },
+    { "B": 5, "E": "[600..625]", "F": "\"MEDIUM\"" },
+    { "B": 6, "E": ">625", "F": "\"LOW\"" },
+    { "B": 7, "C": "FALSE", "D": "<=100", "E": "<580", "F": "\"HIGH\"" },
+    { "B": 8, "E": "[580..600]", "F": "\"MEDIUM\"" },
+    { "B": 9, "E": ">600", "F": "\"LOW\"" },
+    { "B": 10, "D": ">100", "E": "<590", "F": "\"HIGH\"" },
+    { "B": 11, "E": "[590..615]", "F": "\"MEDIUM\"" },
+    { "B": 12, "E": ">615", "F": "\"LOW\"" }
+  ]
+}

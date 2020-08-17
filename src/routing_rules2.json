@@ -1,0 +1,27 @@
+{
+  "Sheet1": [
+    { "B": "Routing Rules" },
+    {
+      "B": "RuleTable",
+      "C": "Condition",
+      "D": "Condition",
+      "E": "Condition",
+      "F": "Condition",
+      "G": "Action"
+    },
+    {
+      "B": "P",
+      "C": "Post Bureau Risk Category",
+      "D": "Post Bureau Affordability",
+      "E": "Bankrupt",
+      "F": "Credit Score",
+      "G": "Routing"
+    },
+    { "F": "null, [0..999]", "G": "\"DECLINE\", \"REFER\", \"ACCEPT\"" },
+    { "B": 1, "C": "-", "D": "FALSE", "E": "-", "F": "-", "G": "\"DECLINE\"" },
+    { "B": 2, "C": "-", "D": "-", "E": "TRUE", "F": "-", "G": "\"DECLINE\"" },
+    { "B": 3, "C": "\"HIGH\"", "D": "-", "E": "-", "F": "-", "G": "\"REFER\"" },
+    { "B": 4, "C": "-", "D": "-", "E": "-", "F": "<580", "G": "\"REFER\"" },
+    { "B": 5, "C": "-", "D": "-", "E": "-", "F": "-", "G": "\"ACCEPT\"" }
+  ]
+}

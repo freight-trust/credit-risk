@@ -1,0 +1,168 @@
+{
+  "Routing": [
+    { "B": "Routing", "C": "invocation" },
+    { "B": "Routing Rules" },
+    { "B": "Bankrupt", "C": "Bureau data . Bankrupt" },
+    { "B": "Credit Score", "C": "Bureau data . CreditScore" },
+    { "B": "Post Bureau Risk Category", "C": "Post bureau risk category" },
+    { "B": "Post Bureau Affordability", "C": "Post bureau affordability" }
+  ],
+  "Routing Rules": [
+    { "B": "Routing Rules" },
+    {
+      "B": "RuleTable",
+      "C": "Condition",
+      "D": "Condition",
+      "E": "Condition",
+      "F": "Condition",
+      "G": "Action"
+    },
+    {
+      "B": "P",
+      "C": "Post Bureau Risk Category",
+      "D": "Post Bureau Affordability",
+      "E": "Bankrupt",
+      "F": "Credit Score",
+      "G": "Routing"
+    },
+    { "F": "null, [0..999]", "G": "\"DECLINE\", \"REFER\", \"ACCEPT\"" },
+    { "B": 1, "C": "-", "D": "FALSE", "E": "-", "F": "-", "G": "\"DECLINE\"" },
+    { "B": 2, "C": "-", "D": "-", "E": "TRUE", "F": "-", "G": "\"DECLINE\"" },
+    { "B": 3, "C": "\"HIGH\"", "D": "-", "E": "-", "F": "-", "G": "\"REFER\"" },
+    { "B": 4, "C": "-", "D": "-", "E": "-", "F": "<580", "G": "\"REFER\"" },
+    { "B": 5, "C": "-", "D": "-", "E": "-", "F": "-", "G": "\"ACCEPT\"" }
+  ],
+  "Post-Bureau risk category": [
+    { "B": "Post bureau risk category", "C": "invocation" },
+    { "B": "Post Bureau risk category table" },
+    { "B": "Existing Customer", "C": "Applicant data . ExistingCustomer" },
+    { "B": "Credit Score", "C": "Bureau data . CreditScore" },
+    { "B": "Application Risk Score", "C": "Application risk score" }
+  ],
+  "Post-Bureau risk category table": [
+    { "B": "Post Bureau risk category table" },
+    {
+      "B": "RuleTable",
+      "C": "Condition",
+      "D": "Condition",
+      "E": "Condition",
+      "F": "Action"
+    },
+    {
+      "B": "U",
+      "C": "Existing Customer",
+      "D": "Application Risk Score",
+      "E": "Credit Score",
+      "F": "Post Bureau Risk Category"
+    },
+    { "B": 1, "C": "FALSE", "D": "< 120", "E": "<590", "F": "\"HIGH\"" },
+    { "B": 2, "E": "[590..610]", "F": "\"MEDIUM\"" },
+    { "B": 3, "E": "> 610", "F": "\"LOW\"" },
+    { "B": 4, "D": "[120..130]", "E": "<600", "F": "\"HIGH\"" },
+    { "B": 5, "E": "[600..625]", "F": "\"MEDIUM\"" },
+    { "B": 6, "E": "> 625", "F": "\"LOW\"" },
+    { "B": 7, "D": "> 130", "E": "-", "F": "\"VERY LOW\"" },
+    { "B": 8, "C": "TRUE", "D": "<= 100", "E": "< 580", "F": "\"HIGH\"" },
+    { "B": 9, "E": "[580..600]", "F": "\"MEDIUM\"" },
+    { "B": 10, "E": "> 600", "F": "\"LOW\"" },
+    { "B": 11, "D": "> 100", "E": "< 590", "F": "\"HIGH\"" },
+    { "B": 12, "E": "[590..615]", "F": "\"MEDIUM\"" },
+    { "B": 13, "E": "> 615", "F": "\"LOW\"" }
+  ],
+  "Post-Bureau affordability": [
+    { "B": "Post bureau affordability", "C": "invocation" },
+    { "B": "Affordability calculation" },
+    { "B": "Monthly Income", "C": "Applicant data . Monthly . Income" },
+    { "B": "Monthly Repayments", "C": "Applicant data . Monthly . Repayments" },
+    { "B": "Monthly Expenses", "C": "Applicant data . Monthly . Expenses" },
+    { "B": "Risk Category", "C": "Post bureau risk category" },
+    { "B": "Required Monthly Installment", "C": "Required monthly installment" }
+  ],
+  "Affordability calculation": [
+    { "B": "Affordability calculation", "C": "context-with-result" },
+    {
+      "B": "(Monthly Income, Monthly Repayments, Monthly Expenses, Risk Category, Required Monthly Installment)"
+    },
+    {
+      "B": "Disposable Income",
+      "C": "Monthly Income - (Monthly Repayments + Monthly Expenses)"
+    },
+    { "B": "Credit Contingency Factor", "C": "Credit contingency factor" },
+    {
+      "B": "Affordability",
+      "C": "if Disposable Income * Credit Contingency Factor > Required Monthly Installment then true else false"
+    },
+    { "B": "Affordability" }
+  ],
+  "Credit-contingency-factor": [
+    { "B": "Credit contingency factor", "C": "invocation" },
+    { "B": "Credit Contingency factor table" },
+    { "B": "Risk Category", "C": "Risk Category" }
+  ],
+  "Credit Contingency factor table": [
+    { "B": "Credit Contingency factor table" },
+    { "B": "RuleTable", "C": "Condition", "D": "Action" },
+    { "B": "U", "C": "Risk Category", "D": "Credit Contingency Factor" },
+    { "B": 1, "C": "\"HIGH\", \"DECLINE\"", "D": 0.6 },
+    { "B": 2, "C": "\"MEDIUM\"", "D": 0.7 },
+    { "B": 3, "C": "\"LOW\", \"VERY LOW\"", "D": 0.8 }
+  ],
+  "Required Monthly Installment": [
+    { "B": "Required monthly installment", "C": "invocation" },
+    { "B": "Installment Calculation" },
+    { "B": "Product Type", "C": "Requested product . ProductType" },
+    { "B": "Rate", "C": "Requested product . Rate" },
+    { "B": "Term", "C": "Requested product . Term" },
+    { "B": "Amount", "C": "Requested product . Amount" }
+  ],
+  "Installment Calculation": [
+    { "B": "Installment Calculation", "C": "context-with-result" },
+    { "B": "(Product Type, Rate, Term, Amount)" },
+    {
+      "B": "Monthly Fee",
+      "C": "if Product Type = \"STANDARD LOAN\" then 20.00 else if Product Type = \"SPECIAL LOAN\" then 25.00 else null"
+    },
+    { "B": "Monthly Repayment", "C": "PMT(Rate, Term, Amount)" },
+    { "B": "Monthly Repayment + Monthly Fee" }
+  ],
+  "Application Risk Score": [
+    { "B": "Application risk score", "C": "invocation" },
+    { "B": "Application risk score model" },
+    { "B": "Age", "C": "Applicant data . Age" },
+    { "B": "Marital Status", "C": "Applicant data . MaritalStatus" },
+    { "B": "Employment Status", "C": "Applicant data . EmploymentStatus" }
+  ],
+  "Application risk score model": [
+    { "B": "Application risk score model" },
+    {
+      "B": "RuleTable",
+      "C": "Condition",
+      "D": "Condition",
+      "E": "Condition",
+      "F": "Action"
+    },
+    {
+      "B": "C+",
+      "C": "Age",
+      "D": "Marital Status",
+      "E": "Employment Status",
+      "F": "Partial Score"
+    },
+    {
+      "C": "[18..120]",
+      "D": "\"S\", \"M\"",
+      "E": "\"UNEMPLOYED\", \"EMPLOYED\", \"SELF-EMPLOYED\", \"STUDENT\""
+    },
+    { "B": 1, "C": "[18..21]", "D": "-", "E": "-", "F": 32 },
+    { "B": 2, "C": "[22..25]", "D": "-", "E": "-", "F": 35 },
+    { "B": 3, "C": "[26..35]", "D": "-", "E": "-", "F": 40 },
+    { "B": 4, "C": "[36..49]", "D": "-", "E": "-", "F": 43 },
+    { "B": 5, "C": ">=50", "D": "-", "E": "-", "F": 48 },
+    { "B": 6, "C": "-", "D": "\"S\"", "E": "-", "F": 25 },
+    { "B": 7, "C": "-", "D": "\"M\"", "E": "-", "F": 45 },
+    { "B": 8, "C": "-", "D": "-", "E": "\"UNEMPLOYED\"", "F": 15 },
+    { "B": 9, "C": "-", "D": "-", "E": "\"STUDENT\"", "F": 18 },
+    { "B": 10, "C": "-", "D": "-", "E": "\"EMPLOYED\"", "F": 45 },
+    { "B": 11, "C": "-", "D": "-", "E": "\"SELF-EMPLOYED\"", "F": 36 }
+  ]
+}

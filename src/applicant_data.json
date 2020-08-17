@@ -1,0 +1,9 @@
+{
+  "Applicant Data": [
+    { "B": "Applicant Data", "C": "context" },
+    { "B": "Age", "C": 51 },
+    { "B": "MaritalStatus", "C": "\"M\"" },
+    { "B": "EmploymentStatus", "C": "\"EMPLOYED\"" },
+    { "B": "ExistingCustomer", "C": "FALSE" }
+  ]
+}
